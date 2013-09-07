@@ -1,16 +1,22 @@
 #include<stdio.h>
-unsigned long long int zerofact(unsigned long int input)
+int zerofact(unsigned long int input)
 {
-        unsigned long long int count=0,fact=1,i=4;
-        while(i<=input)
+        unsigned long long fact=1,i=1;
+        int count=0;
+        while(input>0)
         {
-            fact=fact*i;
+            fact*=input;
+            printf("%d\n ",fact);
             --input;
-            if( ((fact%10)==0) )
+            while( ((fact%10)==0) && (fact>1))
             {
                 ++count;
-                fact=1;
+                fact=(fact/10);
+                if( ((fact%2)!=0) || ((fact%5)!=0) )
+                    fact=1;
+
             }
+
 
         }
         return count;
